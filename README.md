@@ -1,7 +1,7 @@
-Airline Reservation System - Java
+Airline Reservation System -
 A simplistic backend flight reservation system built in Java, designed to help airlines manage flight itineraries, add new flights, and reserve seats for passengers
 
-Features :
+Features include:
 
 Add New Flights: Easily add new flight itineraries to the system, including flight number, origin, destination, and total seats.
 
