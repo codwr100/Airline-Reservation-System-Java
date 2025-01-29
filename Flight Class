@@ -1,0 +1,106 @@
+//To implement a backend flight reservation system for airlines I determined what would be required to create such a system
+//FlightNumbers, Flight Origin, Flight Destination, Total Seats, Avaliable Seats,boolean seats
+
+//this needs to be stored in a constructor
+
+import java.util.list
+import java.util.Arraylist;
+import java.util.Scanner;
+public Flight{
+private string flightnum;
+private string flightorigin;
+private string flightdestination;
+private int totalseats;
+private boolean seats;
+}
+class Flights(string flightnum, string flightorigin, string flightdestination,int totalseats,intavaliableseats){
+this.flightnum = flightnum
+this.flightorigin = flightorigin
+this.flightdestination = flightdestination
+this.totalseats = totalseats
+this.seats = new boolean[totalseats]//false means seat is avaliable, true means seat is unavaliable, we set all seats to avaliable for now
+}
+public boolean bookseat(int seatnumber){ //we need method to check if seat wanted to be sat in is already occupied 
+if(seatnumber < 1 || seatnumber > totalseats){ // if seat number chosen by user is less than 1 or greater than the total ammount of seats return false and tell user an error occured
+System.out.println("Error");
+return false;
+}
+if(seats[seatnumber-1]){ //seat is already occupied
+return false;
+}
+seats[seatnumber-1] = true; //seat has succesfully been occupied by user
+System.out.println(seatnumber + "Succesfully occupied");
+return true;
+}
+//check avaliable seats
+public void displayAvaliableSeats(){
+System.out.println("Avaliable seats for" + flightnum + " ");
+for(int i = 0 i < totalseats; i++){
+if(!seats[i]){ //if i in seat array not occupied then print it
+System.out.println(i + 1);
+}
+//getter method
+public string getflightnum(){
+return flightnum;
+}
+public string getorigin(){
+return flightorigin
+}
+public string getdest(){
+return flightdestination;
+}
+public int gettotseats(){
+return totalseats;
+}
+public boolean getseats(){
+return seats[];
+}
+
+class FlightReservation{
+private link<Flight> flights; //link list to store all flights
+
+public FlightReservation{
+flights = new arrayList<>(); //flights hold all flights in its array list
+}
+
+public void addFlights(Flight flight){ //add flight to array list
+flights.addFlights(flight);
+}
+public Flight findFlight(String flightnum){   // if flight needs to be found its found via flight number
+for(int i = 0; i < flights.size; i++){ 
+Flight flight = flights.get(i); //stores retrived object of flights.get(i)
+if(flight.getflightnum().equals(flightnum){
+return flight;
+}
+public void  displayFlights(){
+for(int i = 0; i < flights.size();i++){
+Flight flight = flights.get(i);
+System.out.println(flight.getflightnum());
+System.out.println(flight.getorigin());
+System.out.println(flight.getdestination());
+System.out.println(flight.gettotalseats());
+
+}
+
+public class mainCode{
+public static void(String[]args){
+Scanner scan = new Scanner(System.in);
+FlightReservation flight = new FlightReservation();
+
+while(true) //while loop for user
+System.out.println("\nAirline Reservation System");
+            System.out.println("1. Display Available Flights");
+            System.out.println("2. Display Available Seats for a Flight");
+            System.out.println("3. Book a Seat");
+            System.out.println("4. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+switch(choice){
+case 1: flight.displayFlights):break;
+case 2: flight.displayAvaliableSeats():break;
+case 3: flight.bookseat():break;
+case 4: // fix later
+
+
+
