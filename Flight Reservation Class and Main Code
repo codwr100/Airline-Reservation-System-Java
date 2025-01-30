@@ -1,0 +1,109 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class FlightReservation {
+    private List<Flight> flights; // List to store all flights
+
+    public FlightReservation() {
+        flights = new ArrayList<>(); // Initialize the list
+    }
+
+    // Method to add a flight to the system
+    public void addFlight(Flight flight) {
+        flights.add(flight);
+    }
+
+    // Method to find a flight by flight number
+    public Flight findFlight(String flightNum) {
+        for (Flight flight : flights) {
+            if (flight.getFlightNum().equals(flightNum)) {
+                return flight;
+            }
+        }
+        return null; // Return null if flight is not found
+    }
+
+    // Method to display all flights
+    public void displayFlights() {
+        System.out.println("Available Flights:");
+        for (Flight flight : flights) {
+            System.out.println("Flight Number: " + flight.getFlightNum());
+            System.out.println("Origin: " + flight.getOrigin());
+            System.out.println("Destination: " + flight.getDestination());
+            System.out.println("Total Seats: " + flight.getTotalSeats());
+            System.out.println("-----------------------------");
+        }
+    }
+import java.util.Scanner;
+
+public class MainCode {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        FlightReservation reservation = new FlightReservation();
+
+        // Adding some sample flights
+        reservation.addFlight(new Flight("F101", "New York", "Los Angeles", 100));
+        reservation.addFlight(new Flight("F202", "Chicago", "Miami", 150));
+
+        while (true) {
+            // Display menu
+            System.out.println("\nAirline Reservation System");
+            System.out.println("1. Display Available Flights");
+            System.out.println("2. Display Available Seats for a Flight");
+            System.out.println("3. Book a Seat");
+            System.out.println("4. Add a New Flight");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    reservation.displayFlights();
+                    break;
+                case 2:
+                    System.out.print("Enter flight number: ");
+                    String flightNum = scanner.nextLine();
+                    Flight flight = reservation.findFlight(flightNum);
+                    if (flight != null) {
+                        flight.displayAvailableSeats();
+                    } else {
+                        System.out.println("Error: Flight not found.");
+                    }
+                    break;
+                case 3:
+                    System.out.print("Enter flight number: ");
+                    flightNum = scanner.nextLine();
+                    flight = reservation.findFlight(flightNum);
+                    if (flight != null) {
+                        System.out.print("Enter seat number: ");
+                        int seatNumber = scanner.nextInt();
+                        scanner.nextLine();
+                        flight.bookSeat(seatNumber);
+                    } else {
+                        System.out.println("Error: Flight not found.");
+                    }
+                    break;
+                case 4:
+                    System.out.print("Enter flight number: ");
+                    flightNum = scanner.nextLine();
+                    System.out.print("Enter origin: ");
+                    String origin = scanner.nextLine();
+                    System.out.print("Enter destination: ");
+                    String destination = scanner.nextLine();
+                    System.out.print("Enter total seats: ");
+                    int totalSeats = scanner.nextInt();
+                    scanner.nextLine();
+                    reservation.addFlight(new Flight(flightNum, origin, destination, totalSeats));
+                    System.out.println("Flight added successfully.");
+                    break;
+                case 5:
+                    System.out.println("Exiting the system. Goodbye!");
+                    scanner.close();
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+}
