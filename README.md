@@ -1,5 +1,5 @@
 Airline Reservation System -
-A simplistic backend flight reservation system built in Java, designed to help airlines manage flight itineraries, add new flights, and reserve seats for passengers
+i created a  backend flight reservation system built in Java this design was made to help airlines manage flight itineraries, add new flights, and reserve seats for passengers
 
 Features include:
 
